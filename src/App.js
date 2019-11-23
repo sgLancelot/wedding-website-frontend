@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Header, Container, Icon, Menu, Image, Button } from 'semantic-ui-react'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Container textAlign='center'>
+      <br/>
+      <Header as='h1' color='pink'>Zhen Kai & Pei Wen</Header>
+      <br/>
+      <Menu text size='large' widths={8}>
+        <Menu.Item name='WELCOME'/>
+        <Menu.Item name='STORY'/>
+        <Menu.Item name='SCHEDULE'/>
+        <Menu.Item name='LOCATION'/>
+      </Menu>
+      <Image src='https://zk-wedding-website-images.s3-ap-southeast-1.amazonaws.com/IMG_3058.jpg' size='huge' centered/>
+      <br/>
+      <Header color='pink' as='h2'>
+        10.10.2020
+      </Header>
+      <br/>
+      <Button basic color='pink'>
+        RSVP Here!
+      </Button>
+    </Container>
+  )
 }
 
-export default App;
+export default App
