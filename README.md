@@ -6,7 +6,7 @@ more @ zhenkai.xyz
 
 
 ## packages to implement
-* CRA to initiate
+* (done) CRA to initiate 
 * react-router for the menu
 * Semantic UI framework
 * redux for the form state
