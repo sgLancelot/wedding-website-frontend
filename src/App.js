@@ -5,9 +5,9 @@ function App() {
   return (
     <Container textAlign='center'>
       <br/>
-      <Header as='h1' color='pink'>Zhen Kai & Pei Wen</Header>
+      <Header as='h1' color='black'>Zhen Kai & Pei Wen</Header>
       <br/>
-      <Menu text size='large' widths={8}>
+      <Menu text size='large' widths={4}>
         <Menu.Item name='WELCOME'/>
         <Menu.Item name='STORY'/>
         <Menu.Item name='SCHEDULE'/>
@@ -19,7 +19,7 @@ function App() {
         10.10.2020
       </Header>
       <br/>
-      <Button basic color='pink'>
+      <Button basic color='black'>
         RSVP Here!
       </Button>
     </Container>
