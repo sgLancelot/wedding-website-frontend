@@ -19,6 +19,5 @@ artifacts:
   files:
     # represents all files recursively
     - "**/*"
-  base-directory:
-    # directory of files and subdirectories to include in build output artifacts
-    - "build"
+  # directory of files and subdirectories to include in build output artifacts
+  base-directory: build
