@@ -23,31 +23,40 @@ const Wedding = () => {
   )
 }
 
-const RSVP = ({
-  name,
-  contact,
-  additional,
-  handleNameChange,
-  handleContactChange,
-  handleAdditionalChange,
-  handleAddGuest
-}) => (
-  <Form onSubmit={handleAddGuest}>
-    <Form.Field>
-      <label>Name</label>
-      <input placeholder='Name' type='text' value={name} onChange={handleNameChange} />
-    </Form.Field>
-    <Form.Field>
-      <label>Contact Number</label>
-      <input placeholder='Contact Number' value={contact} onChange={handleContactChange} />
-    </Form.Field>
-    <Form.Field>
-      <label>Additional guests</label>
-      <input placeholder='Additional guests' value={additional} onChange={handleAdditionalChange} />
-    </Form.Field>
-    <Button type='submit'>Submit</Button>
-  </Form>
-)
+const RSVP = ({handleAddGuest}) => {
+  // ON SUBMIT AND STATE CHECK SEMANTIC UI FORM LAST 2 PARTS
+  const diet = [
+    { key: 'n', text: 'No', value: 'no' },
+    { key: 'v', text: 'Vegetarian', value: 'vege' },
+    { key: 'h', text: 'Halal', value: 'halal' },
+    { key: 'o', text: 'Others', value: 'others' },
+  ]
+
+  return (
+    <Form onSubmit={handleAddGuest}>
+      <Form.Group>
+        <Form.Input fluid label='Name' placeholder='Tan Ah Gow' width={8} required />
+        <Form.Input label='Contact' placeholder='91234567' width={4} required />
+        <Form.Select label='Dietary Requirements' placeholder='No' options={diet} width={4} />
+      </Form.Group>
+      <Form.Group inline>
+        <label>Additional Guests?</label>
+        <Form.Radio label='No' />
+        <Form.Radio label='Yes' />
+      </Form.Group>
+      <Form.Group>
+        <Form.Input fluid placeholder='Adult' width={2} />
+        <Form.Input fluid placeholder='Child' width={2} />
+        <Form.Input fluid placeholder='Baby' width={2} />
+      </Form.Group>
+      <Form.Group inline>
+        <label>Driving?</label>
+        <Form.Radio label='No' />
+        <Form.Radio label='Yes' />
+      </Form.Group>
+      <Button type='submit'>Submit</Button>
+    </Form>
+)}
 
 const Photos = () => {
   return (
