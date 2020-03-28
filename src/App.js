@@ -60,13 +60,11 @@ const RSVP = () => {
       <Grid.Column width={14}>
         <Form size='large'>
           <Segment>
-            <Form.Group unstackable>
-              <Form.Input icon='user' iconPosition='left' placeholder='Name' width={11} />  
-              <Form.Input icon='phone' iconPosition='left' placeholder='Contact' width={5} />
+            <Form.Group widths='equal'>
+              <Form.Input fluid icon='user' iconPosition='left' placeholder='Name' />  
+              <Form.Input fluid icon='phone' iconPosition='left' placeholder='Contact' />
             </Form.Group>
-            <Form.Group>
-              <Form.Checkbox label='Yes, I will be attending the wedding.' required />
-            </Form.Group>            
+            <Form.Checkbox label='Yes, I will be attending the wedding.' required />        
             <Form.Group widths='equal'>
               <Form.Select fluid clearable placeholder='Additional Guests?' options={addiGuests} />
               <Form.Select fluid clearable placeholder='Driving?' options={drive} />
