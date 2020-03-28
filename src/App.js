@@ -23,41 +23,6 @@ const Wedding = () => {
   )
 }
 
-const RSVP = ({handleAddGuest}) => {
-  // ON SUBMIT AND STATE CHECK SEMANTIC UI FORM LAST 2 PARTS
-  const diet = [
-    { key: 'n', text: 'No', value: 'no' },
-    { key: 'v', text: 'Vegetarian', value: 'vege' },
-    { key: 'h', text: 'Halal', value: 'halal' },
-    { key: 'o', text: 'Others', value: 'others' },
-  ]
-
-  return (
-    <Form onSubmit={handleAddGuest}>
-      <Form.Group>
-        <Form.Input fluid label='Name' placeholder='Tan Ah Gow' width={8} required />
-        <Form.Input label='Contact' placeholder='91234567' width={4} required />
-        <Form.Select label='Dietary Requirements' placeholder='No' options={diet} width={4} />
-      </Form.Group>
-      <Form.Group inline>
-        <label>Additional Guests?</label>
-        <Form.Radio label='No' />
-        <Form.Radio label='Yes' />
-      </Form.Group>
-      <Form.Group>
-        <Form.Input fluid placeholder='Adult' width={2} />
-        <Form.Input fluid placeholder='Child' width={2} />
-        <Form.Input fluid placeholder='Baby' width={2} />
-      </Form.Group>
-      <Form.Group inline>
-        <label>Driving?</label>
-        <Form.Radio label='No' />
-        <Form.Radio label='Yes' />
-      </Form.Group>
-      <Button type='submit'>Submit</Button>
-    </Form>
-)}
-
 const Photos = () => {
   return (
     <Segment placeholder>
@@ -68,6 +33,62 @@ const Photos = () => {
     </Segment>
   )
 }
+
+const RSVP = () => {
+  const diet = [
+    { key: 'n', text: 'No Preference', value: 'no' },
+    { key: 'v', text: 'Vegetarian', value: 'vege' },
+    { key: 'h', text: 'Halal', value: 'halal' },
+    { key: 'o', text: 'Others', value: 'others' },
+  ]
+
+  const drive = [
+    { key: 'nd', text: 'Not Driving', value: 'no'},
+    { key: 'd', text: 'Driving', value: 'drv'},
+  ]
+
+  const addiGuests = [
+    { key: 'n', text: 'No Guests', value: 'no'},
+    { key: 'y', text: 'Additional Guests', value: 'yes'},
+  ]
+
+  // ON SUBMIT AND STATE CHECK SEMANTIC UI FORM LAST 2 PARTS
+  // TAKE NOTE UNDER FORMS SEMANTIC UI, THERES INDIVIDUAL LINKS OUT TO INPUT/CHECKBOX ETC
+
+  return (
+    <Grid>
+      <Grid.Column>
+        <Form size='large'>
+          <Segment>
+            <Form.Group>
+              <Form.Input icon='user' iconPosition='left' placeholder='Name' width={11} />  
+              <Form.Input icon='phone' iconPosition='left' placeholder='Contact' width={5} />
+            </Form.Group>
+            <Form.Group>
+              <Form.Checkbox label='Yes, I will be attending the wedding. (leave unchecked if not attending)' />
+            </Form.Group>            
+            <Form.Group widths='equal'>
+              <Form.Select fluid clearable placeholder='Additional Guests?' options={addiGuests} />
+              <Form.Select fluid clearable placeholder='Driving?' options={drive}/>
+              <Form.Select fluid clearable placeholder='Diet?' options={diet} />
+            </Form.Group>
+            <Form.Group widths='equal'>
+              <Form.Input fluid icon='user plus' iconPosition='left' placeholder='No. of Adult/Child' />
+              <Form.Input fluid icon='child' iconPosition='left' placeholder='No. of Baby' />
+              <Form.Select fluid clearable placeholder='Guest Diet?' options={diet} />
+            </Form.Group>
+            <Button color='pink' fluid size='large'>
+              Submit
+            </Button>
+          </Segment>
+        </Form>
+      </Grid.Column>
+    </Grid>
+
+  )
+}
+
+// use Grid stackable for 2 columns, so that in mobile can stack onto each other.
 
 function App() {
   return (
