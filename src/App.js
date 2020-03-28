@@ -48,8 +48,8 @@ const RSVP = () => {
   ]
 
   const addiGuests = [
-    { key: 'n', text: 'No Guests', value: 'no'},
-    { key: 'y', text: 'Additional Guests', value: 'yes'},
+    { key: 'n', text: 'No additional guests', value: 'no'},
+    { key: 'y', text: 'Yes, I have additional guests', value: 'yes'},
   ]
 
   // ON SUBMIT AND STATE CHECK SEMANTIC UI FORM LAST 2 PARTS
@@ -60,17 +60,17 @@ const RSVP = () => {
       <Grid.Column>
         <Form size='large'>
           <Segment>
-            <Form.Group>
+            <Form.Group unstackable>
               <Form.Input icon='user' iconPosition='left' placeholder='Name' width={11} />  
               <Form.Input icon='phone' iconPosition='left' placeholder='Contact' width={5} />
             </Form.Group>
             <Form.Group>
               <Form.Checkbox label='Yes, I will be attending the wedding. (leave unchecked if not attending)' />
             </Form.Group>            
-            <Form.Group widths='equal'>
-              <Form.Select fluid clearable placeholder='Additional Guests?' options={addiGuests} />
-              <Form.Select fluid clearable placeholder='Driving?' options={drive}/>
-              <Form.Select fluid clearable placeholder='Diet?' options={diet} />
+            <Form.Group unstackable>
+              <Form.Select clearable placeholder='Additional Guests?' options={addiGuests} width={6} />
+              <Form.Select clearable placeholder='Driving?' options={drive} width={5} />
+              <Form.Select clearable placeholder='Diet?' options={diet} width={5} />
             </Form.Group>
             <Form.Group widths='equal'>
               <Form.Input fluid icon='user plus' iconPosition='left' placeholder='No. of Adult/Child' />
