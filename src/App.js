@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { Header, Container, Menu, Image, Segment, Icon, Form, Button, Grid } from 'semantic-ui-react'
+import axios from 'axios'
 
 const MainPage = () => {return(
   <>
@@ -41,12 +42,18 @@ const RSVP = ({
   diet,
   drive,
   addiGuest,
+  addiAdultChild,
+  addiBaby,
+  addiDiet,
   handleNameChange,
   handleContactChange,
   handleRsvpChange,
   handleDietChange,
   handleDriveChange,
   handleGuestChange,
+  handleAddiAdultChildChange,
+  handleAddiBabyChange,
+  handleAddiDietChange,
   handleAddGuest,
 }) => {
  //const [rsvpVisi, setRsvpVisi] = useState(false)
@@ -70,9 +77,9 @@ const RSVP = ({
 
   const addiGuestVisi = addiGuest ?
   <Form.Group widths='equal'>
-    <Form.Input fluid icon='user plus' iconPosition='left' placeholder='No. of Adult/Child' />
-    <Form.Input fluid icon='child' iconPosition='left' placeholder='No. of Baby' />
-    <Form.Select fluid clearable placeholder='Dietary Requirements' options={dietOpt} />
+    <Form.Input fluid icon='user plus' iconPosition='left' placeholder='No. of Adult/Child' value={addiAdultChild} onChange={handleAddiAdultChildChange} />
+    <Form.Input fluid icon='child' iconPosition='left' placeholder='No. of Baby Chair' value={addiBaby} onChange={handleAddiBabyChange} />
+    <Form.Select fluid clearable placeholder='Dietary Requirements' options={dietOpt} value={addiDiet} onChange={handleAddiDietChange} />
   </Form.Group> : ''
 
   const rsvpVisi = rsvp ?
@@ -85,8 +92,6 @@ const RSVP = ({
         {addiGuestVisi}
       </> : ''
 
-  // ON SUBMIT AND STATE CHECK SEMANTIC UI FORM LAST 2 PARTS
-  // TAKE NOTE UNDER FORMS SEMANTIC UI, THERES INDIVIDUAL LINKS OUT TO INPUT/CHECKBOX ETC
   return (
     <Grid centered>
       <Grid.Column width={14}>
@@ -109,8 +114,6 @@ const RSVP = ({
   )
 }
 
-// use Grid stackable for 2 columns, so that in mobile can stack onto each other.
-
 function App() {
   const [name, setName] = useState('')
   const [contact, setContact] = useState('')
@@ -118,18 +121,24 @@ function App() {
   const [diet, setDiet] = useState('')
   const [drive, setDrive] = useState('')
   const [addiGuest, setAddiGuest] = useState('')
+  const [addiAdultChild, setAddiAdultChild] = useState('')
+  const [addiBaby, setAddiBaby] = useState('')
+  const [addiDiet, setAddiDiet] = useState('')
 
   const handleAddGuest = async (event) => {
     event.preventDefault()
-    try{
-      console.log('NAME IS:::', name, 'CTC IS:::', contact)
-      console.log('successfully added guest!')
+    try {
+      console.log('Sent to Lambda:',JSON.stringify({name, contact, rsvp, diet, drive, addiGuest, addiAdultChild, addiBaby, addiDiet}))
+      await axios.post('https://m6ylkl9a7e.execute-api.ap-southeast-1.amazonaws.com/dev/', {name, contact, rsvp, diet, drive, addiGuest, addiAdultChild, addiBaby, addiDiet})
       setName('')
       setContact('')
       setRsvp(false)
       setDiet('')
       setDrive('')
       setAddiGuest('')
+      setAddiAdultChild('')
+      setAddiBaby('')
+      setAddiDiet('')
     } catch(exception) {
       console.log('error adding guest')
     }
@@ -159,12 +168,18 @@ function App() {
                 diet={diet}
                 drive={drive}
                 addiGuest={addiGuest}
+                addiAdultChild={addiAdultChild}
+                addiBaby={addiBaby}
+                addiDiet={addiDiet}
                 handleNameChange={(e, {value}) => setName(value)}
                 handleContactChange={(e, {value}) => setContact(value)}
                 handleRsvpChange={() => setRsvp(!rsvp)}
                 handleDietChange={(e, {value}) => setDiet(value)}
                 handleDriveChange={(e, {value}) => setDrive(value)}
                 handleGuestChange={(e, {value}) => setAddiGuest(value)}
+                handleAddiAdultChildChange={(e, {value}) => setAddiAdultChild(value)}
+                handleAddiBabyChange={(e, {value}) => setAddiBaby(value)}
+                handleAddiDietChange={(e, {value}) => setAddiDiet(value)}
                 handleAddGuest={handleAddGuest} />} />
               <Route path="/photos" render={() => <Photos />} />
             </Grid.Column>
@@ -177,14 +192,3 @@ function App() {
 }
 
 export default App
-//<Menu text size='large' widths={3}>
-//<Menu.Item name='WEDDING'/>
-//<Menu.Item name='RSVP'/>
-//<Menu.Item name='PHOTOS'/>
-//</Menu>
-
-//size='huge' 
-
-//<Route exact path="/" render={() => "WEDDDINGGGGG"} />
-//<Route path="/rsvp" render={() => "RSVPPPPPPPPP"} />
-//<Route path="/photos" render={() => "PICSSSSSSSS"} />
