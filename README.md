@@ -7,10 +7,10 @@ more @ zhenkai.xyz
 
 ## packages to implement
 * (done) CRA to initiate 
-* react-router for the menu
-* Semantic UI framework
-* redux for the form state
-* axios for push form
+* (done) react-router for the menu
+* (done) Semantic UI framework
+* (done) useState for the form state
+* (done) axios for push form
 
 ## RSVP form (only backend function)
 * name
