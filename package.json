@@ -16,7 +16,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "sync": "aws s3 sync /c/Users/Lance/Desktop/zkprojects/wedding-website-frontend/build s3://peiwen.zhenkai.xyz"
+    "sync": "aws s3 sync build s3://peiwen.zhenkai.react.bucket"
   },
   "eslintConfig": {
     "extends": "react-app"
