@@ -56,7 +56,6 @@ const RSVP = ({
   handleAddiDietChange,
   handleAddGuest,
 }) => {
- //const [rsvpVisi, setRsvpVisi] = useState(false)
 
   const dietOpt = [
     { key: 'n', text: 'No Preference', value: 'no' },
