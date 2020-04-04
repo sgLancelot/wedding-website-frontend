@@ -12,5 +12,8 @@ more @ zhenkai.xyz
 * (done) useState for the form state
 * (done) axios for push form
 
-## RSVP form (only backend function)
+## RSVP form
 * (done)
+
+## Grid + Layout for Photos
+* pending
