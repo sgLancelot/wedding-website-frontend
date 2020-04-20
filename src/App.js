@@ -5,7 +5,7 @@ import axios from 'axios'
 
 const MainPage = () => {return(
   <>
-    <Image src='https://zk-wedding-website-images.s3-ap-southeast-1.amazonaws.com/IMG_3058.jpg' size='huge'/>
+    <Image src='https://zk-wedding-website-images.s3-ap-southeast-1.amazonaws.com/n_20c.jpg' size='huge'/>
     <Container text textAlign='center' style={{marginTop: '3em'}}>
       <Header size='large' style={{margin: '2em 0em 1em'}}>10 - 10 - 2020</Header>
       <p>Stay tuned!</p>
